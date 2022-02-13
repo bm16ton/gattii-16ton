@@ -391,7 +391,7 @@ fn ui_init() {
     line_ending_dropdown.append(None, "\\n");
     line_ending_dropdown.append(None, "\\r");
     line_ending_dropdown.append(None, "\\r\\n");
-    line_ending_dropdown.append("none", "\\0");
+    line_ending_dropdown.append(None, "\\0");
     line_ending_dropdown.set_active(0);
     popover_container.attach(&line_ending_dropdown, 1, 5, 1, 1);
     
@@ -735,7 +735,7 @@ fn ui_init() {
                         Some(ref x) if x == "\\n" => "\n".to_string(),
                         Some(ref x) if x == "\\r" => "\r".to_string(),
                         Some(ref x) if x == "\\r\\n" => "\r\n".to_string(),
-			Some(ref x) if x == "\\0" => "".to_string(),
+			            Some(ref x) if x == "\\0" => "".to_string(),
                         Some(_) | None => unreachable!(),
                     };
                 });
@@ -907,14 +907,14 @@ fn view_populate_popup(text_view: &gtk::TextView, popup: &gtk::Widget) {
         newline_submenu.append(&newline_r);
         let newline_rn = gtk::RadioMenuItem::new_with_label_from_widget(&newline_n, "\\r\\n");
         newline_submenu.append(&newline_rn);
-	let newline_none = gtk::RadioMenuItem::new_with_label_from_widget(&newline_n, "\\0");
+	    let newline_none = gtk::RadioMenuItem::new_with_label_from_widget(&newline_n, "\\0");
         newline_submenu.append(&newline_none);
         GLOBAL.with(|global| if let Some((.., ref state)) = *global.borrow() {
                         match state.line_ending.as_ref() {
                             "\n" => newline_n.activate(),
                             "\r" => newline_r.activate(),
                             "\r\n" => newline_rn.activate(),
-			    "\0" => newline_none.activate(),
+			                "\0" => newline_none.activate(),
                             _ => unreachable!(),
                         };
                     });
@@ -957,7 +957,7 @@ fn view_populate_popup(text_view: &gtk::TextView, popup: &gtk::Widget) {
                     // The toggle signal triggers on activation and deactivation, so only respond
                     // to activations here.
                     if w.get_active() {
-                        state.line_ending = "\0".to_string();
+                        state.line_ending = "".to_string();
                     }
                 }
             });
