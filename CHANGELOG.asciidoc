@@ -1,0 +1,75 @@
+== Change log
+
+All notable changes to this project will be documented in this file.
+
+The format is based on http://keepachangelog.com/[Keep a Changelog]
+and this project adheres to http://semver.org/[Semantic Versioning].
+
+=== [UNRELEASED]
+
+=== [0.11.0] - 2018-02-14
+==== Added
+* Now supports serial device enumeration on Mac
+
+=== [0.10.0] - 2017-06-03
+==== Added
+* Button to log received data to a file
+* The line ending to send when hitting ENTER is now selectable
+* Control codes can be sent by hitting CTRL and one of @, A-Z, [, \, ], ^, _
+* Alternate text view "hex", which shows input character in hex
+* Status bar displays messages about port activity (port open/close, send file
+  start/finish, log to file start/finish)
+* Ports are regularly scanned and the port dropdown is now updated regularly.
+* Port disconnections are now detected and gracefully handled
+
+==== Changed
+* Reduced GTK+ version requirements to 3.14+
+
+==== Fixed
+* Canceling the send file dialog now correct re-enables the send file dialog
+  button
+* Closing the port while sending a file no longer causes a crash.
+* Sending a file will now complete once all of the file has been sent.
+
+=== [0.9.0] - 2017-02-04
+==== Added
+* "Clear All" option in the right-click menu (only active when text in the buffer)
+
+==== Fixed
+* Toolbar buttons now have consistent styling
+* The toolbar can no longer be shrunk in width to an unusable size
+* "Delete" on the right-click menu has been removed as it didn't work
+
+==== Changed
+* "Paste" option in the right-click menu only active if a port is open
+* Output is now sorted into an appropriate error level and only error-level messages
+  are enabled by default.
+
+=== [0.2.0] - 2017-01-31
+==== Added
+* Non-baud port settings are now configurable
+* The text view can be cleared through the 'Clear All' option in the right-click
+  menu
+
+==== Changed
+* Updated the README
+* Updated the GTK+ requirements to 3.20+
+* Removed all instances of `try!()` for `?`
+
+==== Fixed
+* Removed warning about unused variable
+
+=== [0.1.1] - 2017-01-15
+==== Added
+* Improved user error messages on bad connections
+
+==== Changed
+* Switched from serial-rs to serialport-rs library
+
+==== Fixed
+* Fixed open button only looking pressed when port is open
+* Fixed UI inconsistencies when changing opened port
+
+=== [0.1.0] - 2016-12-22
+==== Added
+* Initial release.

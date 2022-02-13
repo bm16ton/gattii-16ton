@@ -1,0 +1,30 @@
+[package]
+name = "gattii"
+version = "0.13.1-alpha.0"
+authors = ["Bryant Mairs <bryant@mai.rs>"]
+categories = ["hardware-support"]
+keywords = ["serial", "hardware", "system", "RS232", "terminal"]
+license = "GPL-3.0"
+readme = "README.md"
+repository = "https://gitlab.com/susurrus/gattii"
+description = "Cross platform GUI (GTK-based) serial terminal"
+
+[badges]
+appveyor = { repository = "Susurrus/gattii", service = "gitlab" }
+gitlab = { repository = "susurrus/gattii" }
+travis-ci = { repository = "Susurrus/gattii" }
+
+[[bin]]
+name = "gattii"
+doc = false
+
+[dependencies]
+clap = "2.22"
+cairo-rs = "0.6"
+chrono = "0.4"
+env_logger = "0.6"
+gdk = "0.10"
+glib = "0.7"
+gtk = "0.6"
+log = "0.4"
+serialport = "3.1"
